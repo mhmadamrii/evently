@@ -73,7 +73,8 @@ module.exports = withUt({
         poppins: ['var(--font-poppins)'],
       },
       backgroundImage: {
-        'dotted-pattern': "url('/assets/images/dotted-pattern.png')",
+        'dotted-pattern':
+          "url('/assets/images/dotted-pattern.png')",
         'hero-img': "url('/assets/images/hero.png')",
       },
       borderRadius: {
@@ -84,10 +85,14 @@ module.exports = withUt({
       keyframes: {
         'accordion-down': {
           from: { height: '0' },
-          to: { height: 'var(--radix-accordion-content-height)' },
+          to: {
+            height: 'var(--radix-accordion-content-height)',
+          },
         },
         'accordion-up': {
-          from: { height: 'var(--radix-accordion-content-height)' },
+          from: {
+            height: 'var(--radix-accordion-content-height)',
+          },
           to: { height: '0' },
         },
       },
