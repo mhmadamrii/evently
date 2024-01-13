@@ -1,11 +1,14 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import MobileNav from './MobileNav';
 
 import {
   SignedIn,
   SignedOut,
   UserButton,
 } from '@clerk/nextjs';
+import { Button } from '../ui/button';
+import NavItems from './NavItems';
 
 export default function Header() {
   return (
@@ -20,10 +23,29 @@ export default function Header() {
           />
         </Link>
 
-        <div className="flex w-32 justify-end gap-3"></div>
+        <SignedIn>
+          <nav className="md:flex-between hidden w-full max-w-xs">
+            <NavItems />
+          </nav>
+        </SignedIn>
+
+        <div className="flex w-32 justify-end gap-3">
+          <SignedIn>
+            <UserButton afterSignOutUrl="/" />
+            <MobileNav />
+          </SignedIn>
+
+          <SignedOut>
+            <Button
+              asChild
+              size="lg"
+              className="rounded-full"
+            >
+              <Link href="/sign-in">Login</Link>
+            </Button>
+          </SignedOut>
+        </div>
       </div>
-      <h1>Some header</h1>
-      <h1>Some header</h1>
     </header>
   );
 }
