@@ -38,7 +38,7 @@ export default function EventForm({
   event,
   eventId,
 }: {
-  userId?: string | undefined;
+  userId: string;
   type?: 'Create' | 'Update';
   event?: any;
   eventId?: string;
@@ -80,7 +80,6 @@ export default function EventForm({
       try {
         const newEvent = await createEvent({
           event: { ...values, imageUrl: uploadedImageUrl },
-          // @ts-ignore
           userId,
           path: '/profile',
         });

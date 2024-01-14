@@ -23,14 +23,18 @@ export async function createEvent({
     await connectToDatabase();
 
     const organizer = await User.findById(userId);
+    console.log('user id', userId);
+    console.log('organizer', organizer);
 
     if (!organizer) throw new Error('Organizer not found');
+    console.log('event value', event);
 
     const newEvent = await Event.create({
       ...event,
       category: event.categoryId,
       organizer: userId,
     });
+    console.log('result', newEvent);
 
     revalidatePath(path);
 

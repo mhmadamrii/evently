@@ -59,3 +59,5 @@ export default function Home({
     </>
   );
 }
+
+// link tutorial: https://www.youtube.com/watch?v=zgGhzuBZOQg&t=6797s

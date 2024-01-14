@@ -3,9 +3,11 @@ import EventForm from '~/components/shared/EventForm';
 import { auth } from '@clerk/nextjs';
 
 export default function CreateEvent() {
-  const { sessionClaims } = auth();
+  const { sessionClaims, userId: cuk } = auth();
 
   const userId = sessionClaims?.userId as string;
+  console.log('user idddd', userId);
+  console.log('cuk', cuk);
 
   return (
     <>
