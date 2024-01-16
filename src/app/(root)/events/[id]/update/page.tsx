@@ -1,5 +1,5 @@
 import EventForm from '~/components/shared/EventForm';
-// import { getEventById }
+
 import { auth } from '@clerk/nextjs';
 import { getEventById } from '~/lib/actions/event.actions';
 
@@ -24,7 +24,6 @@ export default async function UpdateEvent({
         <EventForm
           type="Update"
           event={event}
-          // @ts-ignore
           eventId={event._id}
           userId={userId}
         />

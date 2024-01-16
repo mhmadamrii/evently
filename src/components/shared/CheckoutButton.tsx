@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import Link from 'next/link';
 import Checkout from './Checkout';
@@ -21,6 +23,7 @@ export default function CheckoutButton({
   const hasEventFinished =
     new Date(event.endDateTime) < new Date();
 
+  console.log('has finish', hasEventFinished);
   return (
     <div className="flex items-center gap-3">
       {hasEventFinished ? (

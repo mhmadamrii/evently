@@ -17,7 +17,9 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { eventFormSchema } from '~/lib/validator';
 import { eventDefaultValues } from '~/constants';
+import { Button } from '../ui/button';
 import { useRouter } from 'next/navigation';
+import { useUploadThing } from '~/lib/uploadthing';
 
 import {
   Form,
@@ -28,9 +30,11 @@ import {
   FormLabel,
   FormMessage,
 } from '~/components/ui/form';
-import { Button } from '../ui/button';
-import { createEvent } from '~/lib/actions/event.actions';
-import { useUploadThing } from '~/lib/uploadthing';
+
+import {
+  createEvent,
+  updateEvent,
+} from '~/lib/actions/event.actions';
 
 export default function EventForm({
   userId,
@@ -102,15 +106,19 @@ export default function EventForm({
       }
 
       try {
-        // const updatedEvent = await updateEvent({
-        //   userId,
-        //   event: { ...values, imageUrl: uploadedImageUrl, _id: eventId },
-        //   path: `/events/${eventId}`
-        // })
-        // if(updatedEvent) {
-        //   form.reset();
-        //   router.push(`/events/${updatedEvent._id}`)
-        // }
+        const updatedEvent = await updateEvent({
+          userId,
+          event: {
+            ...values,
+            imageUrl: uploadedImageUrl,
+            _id: eventId,
+          },
+          path: `/events/${eventId}`,
+        });
+        if (updatedEvent) {
+          form.reset();
+          router.push(`/events/${updatedEvent._id}`);
+        }
       } catch (error) {
         console.log(error);
       }
