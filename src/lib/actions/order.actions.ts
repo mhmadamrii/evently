@@ -165,6 +165,7 @@ export async function getOrdersByUser({
           select: '_id firstName lastName',
         },
       });
+    // console.log('orders server action', orders);
 
     const ordersCount =
       await Order.distinct('event._id').countDocuments(
