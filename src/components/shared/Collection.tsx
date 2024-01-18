@@ -27,7 +27,6 @@ export default function Collection({
   collectionType,
   urlParamName,
 }: CollectionProps) {
-  console.log('datas', data);
   return (
     <>
       {data.length > 0 ? (

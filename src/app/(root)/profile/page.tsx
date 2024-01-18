@@ -23,12 +23,8 @@ export default async function Profile({
     page: ordersPage,
   });
 
-  console.log('fdjfdk', orders);
-
   const orderedEvents =
     orders?.data.map((order: IOrder) => order.event) || [];
-
-  console.log('ordered', orderedEvents);
 
   const organizedEvents = await getEventsByUser({
     userId,

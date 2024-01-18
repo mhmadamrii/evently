@@ -147,6 +147,7 @@ export async function getOrdersByUser({
 }: GetOrdersByUserParams) {
   try {
     await connectToDatabase();
+    console.log('user id', userId);
 
     const skipAmount = (Number(page) - 1) * limit;
     const conditions = { buyer: userId };
@@ -165,6 +166,19 @@ export async function getOrdersByUser({
           select: '_id firstName lastName',
         },
       });
+
+    // const orderAgain = await Order.find({})
+    //   .find({ buyer: userId })
+    //   .populate({
+    //     path: 'event',
+    //     model: Event,
+    //     populate: {
+    //       path: 'organizer',
+    //       model: User,
+    //       select: '_id firstName lastName',
+    //     },
+    //   });
+    // console.log('order again', orderAgain);
     // console.log('orders server action', orders);
 
     const ordersCount =

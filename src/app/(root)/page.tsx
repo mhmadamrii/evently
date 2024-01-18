@@ -71,7 +71,7 @@ export default async function Home({
         </h2>
 
         <div className="flex w-full flex-col gap-5 md:flex-row">
-          <Search />
+          <Search placeholder="Search here.." />
           <CategoryFilter />
         </div>
 

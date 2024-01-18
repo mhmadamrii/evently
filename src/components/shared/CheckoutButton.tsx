@@ -23,7 +23,6 @@ export default function CheckoutButton({
   const hasEventFinished =
     new Date(event.endDateTime) < new Date();
 
-  console.log('has finish', hasEventFinished);
   return (
     <div className="flex items-center gap-3">
       {hasEventFinished ? (
