@@ -6,7 +6,7 @@ import { IOrderItem } from '~/lib/database/models/order.model';
 import { formatDateTime, formatPrice } from '~/lib/utils';
 import { SearchParamProps } from '~/types';
 
-export default async function ({
+export default async function Orders({
   searchParams,
 }: SearchParamProps) {
   const eventId = (searchParams?.eventId as string) || '';
@@ -16,9 +16,10 @@ export default async function ({
     eventId,
     searchString: searchText,
   });
+
   return (
     <>
-      <section className=" bg-primary-50 bg-dotted-pattern bg-cover bg-center py-5 md:py-10">
+      <section className="bg-primary-50 bg-dotted-pattern bg-cover bg-center py-5 md:py-10">
         <h3 className="wrapper h3-bold text-center sm:text-left ">
           Orders
         </h3>
