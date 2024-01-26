@@ -47,6 +47,7 @@ export default function EventForm({
   event?: any;
   eventId?: string;
 }) {
+  console.log('user id', userId);
   const [files, setFiles] = useState<File[]>([]);
   const initialValues =
     event && type === 'Update'
