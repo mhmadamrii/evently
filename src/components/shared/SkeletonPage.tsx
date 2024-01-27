@@ -11,7 +11,9 @@ export default function SkeletonPage() {
             <Skeleton className="h-12 w-full sm:w-fit" />
           </div>
 
-          <div className="flex flex-col gap-[15px]">
+          <div className="flex flex-col gap-[15px] pl-5">
+            <Skeleton className="h-[20px] w-full object-contain object-center 2xl:max-h-[50vh]" />
+            <Skeleton className="h-[20px] w-full object-contain object-center 2xl:max-h-[50vh]" />
             <Skeleton className="h-[20px] w-full object-contain object-center 2xl:max-h-[50vh]" />
             <Skeleton className="h-[20px] w-full object-contain object-center 2xl:max-h-[50vh]" />
             <Skeleton className="h-[20px] w-full object-contain object-center 2xl:max-h-[50vh]" />
