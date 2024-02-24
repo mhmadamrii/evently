@@ -18,6 +18,7 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from '~/components/ui/alert-dialog';
+import { toast } from 'sonner';
 
 export const DeleteConfirmation = ({
   eventId,
@@ -54,10 +55,15 @@ export const DeleteConfirmation = ({
           <AlertDialogAction
             onClick={() =>
               startTransition(async () => {
-                await deleteEvent({
-                  eventId,
-                  path: pathname,
-                });
+                try {
+                  await deleteEvent({
+                    eventId,
+                    path: pathname,
+                  });
+                  toast.success('Event has been deleted');
+                } catch (error) {
+                  console.log(error);
+                }
               })
             }
           >

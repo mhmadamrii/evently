@@ -20,14 +20,13 @@ import { eventDefaultValues } from '~/constants';
 import { Button } from '../ui/button';
 import { useRouter } from 'next/navigation';
 import { useUploadThing } from '~/lib/uploadthing';
+import { toast } from 'sonner';
 
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
-  FormLabel,
   FormMessage,
 } from '~/components/ui/form';
 
@@ -75,6 +74,9 @@ export default function EventForm({
       const uploadedImages = await startUpload(files);
 
       if (!uploadedImages) {
+        toast.error(
+          'Something went wrong while uploading the image',
+        );
         return;
       }
 
@@ -92,9 +94,8 @@ export default function EventForm({
         if (newEvent !== undefined && newEvent !== null) {
           form.reset();
           router.push(`/events/${newEvent?._id}`);
+          toast.success('Event has been created');
         }
-
-        console.log('valuesnya', values);
       } catch (error) {
         console.log('error', error);
       }
@@ -119,6 +120,7 @@ export default function EventForm({
         if (updatedEvent) {
           form.reset();
           router.push(`/events/${updatedEvent._id}`);
+          toast.success('Event has been updated');
         }
       } catch (error) {
         console.log(error);

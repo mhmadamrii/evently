@@ -1,7 +1,8 @@
+import './globals.css';
 import type { Metadata } from 'next';
 import { Inter, Poppins } from 'next/font/google';
-import './globals.css';
 import { ClerkProvider } from '@clerk/nextjs';
+import { Toaster } from 'sonner';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -22,13 +23,16 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: {
+}: Readonly<{
   children: React.ReactNode;
-}) {
+}>) {
   return (
     <ClerkProvider>
       <html lang="en">
-        <body className={poppins.variable}>{children}</body>
+        <body className={poppins.variable}>
+          <Toaster position="bottom-center" richColors />
+          {children}
+        </body>
       </html>
     </ClerkProvider>
   );
