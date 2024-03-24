@@ -46,7 +46,7 @@ export default function EventForm({
   event?: any;
   eventId?: string;
 }) {
-  console.log('user id', userId);
+  // console.log('user id', event);
   const [files, setFiles] = useState<File[]>([]);
   const initialValues =
     event && type === 'Update'
@@ -68,6 +68,7 @@ export default function EventForm({
   const onSubmit = async (
     values: z.infer<typeof eventFormSchema>,
   ) => {
+    console.log('type', type);
     let uploadedImageUrl = values.imageUrl;
 
     if (files.length > 0) {
