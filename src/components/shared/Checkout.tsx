@@ -17,8 +17,8 @@ export default function Checkout({
 }) {
   const onCheckout = async () => {
     const order = {
-      eventTitle: event.title,
-      eventId: event._id,
+      eventTitle: event?.title,
+      eventId: event?._id,
       price: event.price,
       isFree: event.isFree,
       buyerId: userId,

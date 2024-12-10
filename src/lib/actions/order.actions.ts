@@ -111,8 +111,8 @@ export async function getOrdersByEvent({
           _id: 1,
           totalAmount: 1,
           createdAt: 1,
-          eventTitle: '$event.title',
-          eventId: '$event._id',
+          eventTitle: '$event?.title',
+          eventId: '$event?._id',
           buyer: {
             $concat: [
               '$buyer.firstName',
@@ -152,7 +152,7 @@ export async function getOrdersByUser({
     const skipAmount = (Number(page) - 1) * limit;
     const conditions = { buyer: userId };
 
-    const orders = await Order.distinct('event._id')
+    const orders = await Order.distinct('event?._id')
       .find(conditions)
       .sort({ createdAt: 'desc' })
       .skip(skipAmount)
@@ -182,7 +182,7 @@ export async function getOrdersByUser({
     // console.log('orders server action', orders);
 
     const ordersCount =
-      await Order.distinct('event._id').countDocuments(
+      await Order.distinct('event?._id').countDocuments(
         conditions,
       );
 

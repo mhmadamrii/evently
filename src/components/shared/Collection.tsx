@@ -40,7 +40,7 @@ export default function Collection({
 
               return (
                 <li
-                  key={event._id}
+                  key={event?._id}
                   className="flex justify-center"
                 >
                   <Card

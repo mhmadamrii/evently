@@ -154,7 +154,7 @@ export async function updateEvent({
   try {
     await connectToDatabase();
 
-    const eventToUpdate = await Event.findById(event._id);
+    const eventToUpdate = await Event.findById(event?._id);
     if (
       !eventToUpdate ||
       eventToUpdate.organizer.toHexString() !== userId
@@ -163,7 +163,7 @@ export async function updateEvent({
     }
 
     const updatedEvent = await Event.findByIdAndUpdate(
-      event._id,
+      event?._id,
       { ...event, category: event.categoryId },
       { new: true },
     );

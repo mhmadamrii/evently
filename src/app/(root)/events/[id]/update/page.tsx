@@ -24,7 +24,7 @@ export default async function UpdateEvent({
         <EventForm
           type="Update"
           event={event}
-          eventId={event._id}
+          eventId={event?._id}
           userId={userId}
         />
       </div>

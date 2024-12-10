@@ -18,7 +18,7 @@ export default async function EventDetails({
 
   const relatedEvents = await getRelatedEventsByCategory({
     categoryId: event.category._id,
-    eventId: event._id,
+    eventId: event?._id,
     page: searchParams.page as string,
   });
 
@@ -36,7 +36,7 @@ export default async function EventDetails({
 
           <div className="flex w-full flex-col gap-8 p-5 md:p-10">
             <div className="flex flex-col gap-6">
-              <h2 className="h2-bold">{event.title}</h2>
+              <h2 className="h2-bold">{event?.title}</h2>
 
               <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
                 <div className="flex gap-3">
@@ -73,12 +73,12 @@ export default async function EventDetails({
                 <div className="p-medium-16 lg:p-regular-20 flex flex-wrap items-center">
                   <p>
                     {
-                      formatDateTime(event.startDateTime)
+                      formatDateTime(event?.startDateTime)
                         .dateOnly
                     }{' '}
                     -{' '}
                     {
-                      formatDateTime(event.startDateTime)
+                      formatDateTime(event?.startDateTime)
                         .timeOnly
                     }
                   </p>
